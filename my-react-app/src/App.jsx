@@ -1,13 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import Bottom from "./components/Bottom";
+import Middle from "./components/Middle";
+import Top from "./components/Top";
 
 function App() {
   return (
-    <div className="app">
-      <h1 className="text-xl text-red-400 text-center">
-        <FontAwesomeIcon icon={faEnvelope} /> My Typing App
-      </h1>
-    </div>
+    <>
+      <div></div>
+      <div className="App">
+        <Top />
+        <Middle />
+        <Bottom />
+      </div>
+      <div></div>
+    </>
   );
 }
 

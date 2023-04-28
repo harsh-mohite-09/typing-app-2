@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Roboto+Mono:wght@400;700&display=swap");
+
 :root {
   --bg-color: #323437;
   --main-color: #e2b714;
@@ -9,14 +11,73 @@
   --error-extra-color: #7e2a33;
   --colorful-error-color: #ca4754;
   --colorful-error-extra-color: #7e2a33;
+  --font-family: "Roboto Mono", monospace;
+  --font-family-header: "Lexend Deca", sans-serif;
 }
 
 #root {
   background-color: var(--bg-color);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   height: 100vh;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1380px) auto;
+  justify-items: center;
+}
+
+body {
+  color: white;
+  font-family: var(--font-family);
+}
+
+.App {
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: row;
+  grid-template-rows: auto 1fr auto;
+  max-width: 1380px;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: padding-top 0.125s;
+  width: 100%;
+}
+
+.App > div {
+  /* background-color: var(--sub-color); */
+  height: 100%;
+}
+
+h1 {
+  font-family: var(--font-family-header);
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+.main-icon {
+  color: var(--main-color);
+  font-size: 2.3rem;
+}
+
+.middle-container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+}
+
+.test-config {
+  background-color: var(--sub-alt-color);
+  border-radius: 0.5rem;
+  color: var(--sub-color);
+}
+
+.test-config > ul > li {
+  transition: 0.15s all linear;
+}
+
+.test-config > ul > li:hover {
+  cursor: pointer;
+  color: var(--text-color);
 }
 
 @tailwind base;

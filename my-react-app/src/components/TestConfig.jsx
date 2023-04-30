@@ -1,27 +1,76 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setMode, setValue } from "../utils/testconfigSlice";
+import { setModeWords } from "../utils/appSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faFont } from "@fortawesome/free-solid-svg-icons";
+
+const times = [15, 30, 60, 120];
+const words = [10, 25, 50, 100];
 
 const TestConfig = () => {
-  const [testType, setTestType] = useState("time");
+  const { mode, value } = useSelector((store) => store.testConfig);
+
+  const dispatch = useDispatch();
+
   return (
     <div className="p-8 text-center">
-      <div className="test-config flex w-fit justify-between p-2 m-auto">
-        <ul className="flex justify-evenly w-[10rem]">
-          <li onClick={() => setTestType("time")}>time</li>
-          <li onClick={() => setTestType("words")}>words</li>
+      <div className="test-config flex w-fit justify-between items-center m-auto">
+        <ul className="flex justify-evenly w-[12rem]">
+          <li
+            onClick={() => {
+              dispatch(setMode("time"));
+              dispatch(setModeWords({ mode: "time" }));
+            }}
+            className={mode === "time" ? "mode-active" : ""}
+          >
+            <FontAwesomeIcon icon={faClock} className="text-xs mr-1" />
+            time
+          </li>
+          <li
+            onClick={() => {
+              dispatch(setMode("words"));
+              dispatch(setModeWords({ mode: "words", value: 10 }));
+            }}
+            className={mode === "words" ? "mode-active" : ""}
+          >
+            <FontAwesomeIcon icon={faFont} className="text-sm mr-1" />
+            words
+          </li>
         </ul>
-        {testType === "time" ? (
+        <div className="spacer"></div>
+        {mode === "time" ? (
           <ul className="test-options flex justify-evenly w-[15rem]">
-            <li>15</li>
-            <li>30</li>
-            <li>60</li>
-            <li>120</li>
+            {times.map((s, i) => {
+              return (
+                <li
+                  key={i}
+                  onClick={() => {
+                    dispatch(setValue(s));
+                    dispatch(setModeWords({ mode }));
+                  }}
+                  className={value === s ? "mode-active" : ""}
+                >
+                  {s}
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <ul className="test-options flex justify-evenly w-[15rem]">
-            <li>10</li>
-            <li>25</li>
-            <li>50</li>
-            <li>100</li>
+            {words.map((n, i) => {
+              return (
+                <li
+                  key={i}
+                  onClick={() => {
+                    dispatch(setValue(n));
+                    dispatch(setModeWords({ mode, value: n }));
+                  }}
+                  className={value === n ? "mode-active" : ""}
+                >
+                  {n}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

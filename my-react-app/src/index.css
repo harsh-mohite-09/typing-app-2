@@ -148,6 +148,14 @@ h1 {
   color: var(--main-color);
 }
 
+.score {
+  color: var(--main-color);
+}
+
+.score-units {
+  color: var(--sub-color);
+}
+
 @keyframes caretFlash {
   0% {
     opacity: 0;

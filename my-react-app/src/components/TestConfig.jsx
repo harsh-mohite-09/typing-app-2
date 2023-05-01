@@ -1,6 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setMode, setValue } from "../utils/testconfigSlice";
-import { setModeWords } from "../utils/appSlice";
+import {
+  setModeWords,
+  resetApp,
+  resetShowScore,
+  clearMarkings,
+  clearTimer,
+} from "../utils/appSlice";
+import { resetAll } from "../utils/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faFont } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,6 +27,11 @@ const TestConfig = () => {
             onClick={() => {
               dispatch(setMode("time"));
               dispatch(setModeWords({ mode: "time" }));
+              dispatch(resetAll());
+              dispatch(resetApp());
+              dispatch(resetShowScore());
+              dispatch(clearMarkings());
+              dispatch(clearTimer());
             }}
             className={mode === "time" ? "mode-active" : ""}
           >
@@ -30,6 +42,11 @@ const TestConfig = () => {
             onClick={() => {
               dispatch(setMode("words"));
               dispatch(setModeWords({ mode: "words", value: 10 }));
+              dispatch(resetAll());
+              dispatch(resetApp());
+              dispatch(resetShowScore());
+              dispatch(clearMarkings());
+              dispatch(clearTimer());
             }}
             className={mode === "words" ? "mode-active" : ""}
           >
@@ -47,6 +64,11 @@ const TestConfig = () => {
                   onClick={() => {
                     dispatch(setValue(s));
                     dispatch(setModeWords({ mode }));
+                    dispatch(resetAll());
+                    dispatch(resetApp());
+                    dispatch(resetShowScore());
+                    dispatch(clearMarkings());
+                    dispatch(clearTimer());
                   }}
                   className={value === s ? "mode-active" : ""}
                 >
@@ -64,6 +86,11 @@ const TestConfig = () => {
                   onClick={() => {
                     dispatch(setValue(n));
                     dispatch(setModeWords({ mode, value: n }));
+                    dispatch(resetAll());
+                    dispatch(resetApp());
+                    dispatch(resetShowScore());
+                    dispatch(clearMarkings());
+                    dispatch(clearTimer());
                   }}
                   className={value === n ? "mode-active" : ""}
                 >

@@ -18,14 +18,31 @@ export const getWordsByMode = (mode, value, arr) => {
 
 export const getUserWords = (arr) => {
   if (arr.length === 0) return arr;
-  const newArr = [];
-  let j = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== " ") {
-      newArr[j] = (newArr[j] ?? "") + arr[i];
-    } else {
-      j++;
+  // const newArr = [];
+  // let j = 0;
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (arr[i] !== " ") {
+  //     newArr[j] = (newArr[j] ?? "") + arr[i];
+  //   } else {
+  //     j++;
+  //   }
+  // }
+  return arr.join("").split(" ");
+};
+
+export const getAccuracy = (userWords, wordList, size) => {
+  const wordListTrim = wordList.slice(0, size);
+  // const newUserInput = userInput.filter((e) => e !== " ");
+  // console.log(userWords, wordListTrim);
+  let count = 0;
+  let total = 0;
+  for (let i = 0; i < wordListTrim.length; i++) {
+    for (let j = 0; j < wordListTrim[i].length; j++) {
+      if (wordListTrim[i][j] === userWords[i][j]) {
+        count++;
+      }
+      total++;
     }
   }
-  return newArr;
+  return (count / total) * 100;
 };

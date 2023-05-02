@@ -9,7 +9,7 @@ const WordCount = () => {
 
   return (
     <div className="word-count">
-      {userWords.length}/{wordList.length}
+      {userWords.length <= 1 ? 1 : userWords.length}/{wordList.length}
     </div>
   );
 };

@@ -4,19 +4,18 @@ import {
   setModeWords,
   resetApp,
   resetShowScore,
-  clearMarkings,
   clearTimer,
+  resetGame,
 } from "../utils/appSlice";
 import { resetAll } from "../utils/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faFont } from "@fortawesome/free-solid-svg-icons";
 
-const times = [15, 30, 60, 120];
-const words = [10, 25, 50, 100];
+const times = [15, 30, 60];
+const words = [10, 25, 50];
 
 const TestConfig = () => {
   const { mode, value } = useSelector((store) => store.testConfig);
-
   const dispatch = useDispatch();
 
   return (
@@ -30,8 +29,8 @@ const TestConfig = () => {
               dispatch(resetAll());
               dispatch(resetApp());
               dispatch(resetShowScore());
-              dispatch(clearMarkings());
               dispatch(clearTimer());
+              dispatch(resetGame());
             }}
             className={mode === "time" ? "mode-active" : ""}
           >
@@ -45,8 +44,8 @@ const TestConfig = () => {
               dispatch(resetAll());
               dispatch(resetApp());
               dispatch(resetShowScore());
-              dispatch(clearMarkings());
               dispatch(clearTimer());
+              dispatch(resetGame());
             }}
             className={mode === "words" ? "mode-active" : ""}
           >
@@ -67,8 +66,8 @@ const TestConfig = () => {
                     dispatch(resetAll());
                     dispatch(resetApp());
                     dispatch(resetShowScore());
-                    dispatch(clearMarkings());
                     dispatch(clearTimer());
+                    dispatch(resetGame());
                   }}
                   className={value === s ? "mode-active" : ""}
                 >
@@ -89,8 +88,8 @@ const TestConfig = () => {
                     dispatch(resetAll());
                     dispatch(resetApp());
                     dispatch(resetShowScore());
-                    dispatch(clearMarkings());
                     dispatch(clearTimer());
+                    dispatch(resetGame());
                   }}
                   className={value === n ? "mode-active" : ""}
                 >

@@ -13,27 +13,16 @@ export const getWordsByMode = (mode, value, arr) => {
   if (mode === "words") {
     return shuffleWords(arr).slice(0, value);
   }
-  return shuffleWords(arr).slice(0, 300);
+  return shuffleWords(arr).slice(0, 100);
 };
 
 export const getUserWords = (arr) => {
   if (arr.length === 0) return arr;
-  // const newArr = [];
-  // let j = 0;
-  // for (let i = 0; i < arr.length; i++) {
-  //   if (arr[i] !== " ") {
-  //     newArr[j] = (newArr[j] ?? "") + arr[i];
-  //   } else {
-  //     j++;
-  //   }
-  // }
-  return arr.join("").split(" ");
+  return arr?.join("").split(" ");
 };
 
 export const getAccuracy = (userWords, wordList, size) => {
   const wordListTrim = wordList.slice(0, size);
-  // const newUserInput = userInput.filter((e) => e !== " ");
-  // console.log(userWords, wordListTrim);
   let count = 0;
   let total = 0;
   for (let i = 0; i < wordListTrim.length; i++) {
@@ -45,4 +34,36 @@ export const getAccuracy = (userWords, wordList, size) => {
     }
   }
   return (count / total) * 100;
+};
+
+export const getHiglightedWordList = (wordList, userInput) => {
+  const updatedWordList = [];
+  const userWords = getUserWords(userInput);
+  for (let i = 0; i < wordList.length; i++) {
+    const updatedWord = [];
+    for (let j = 0; j < wordList[i].length; j++) {
+      const letterObj = {};
+      if (userWords[i]) {
+        if (userWords[i][j]) {
+          if (wordList[i][j] === userWords[i][j]) {
+            letterObj.text = wordList[i][j];
+            letterObj.label = "correct";
+          } else {
+            letterObj.text = wordList[i][j];
+            letterObj.label = "wrong-letter";
+          }
+        } else {
+          letterObj.text = wordList[i][j];
+          letterObj.label = "";
+        }
+        updatedWord.push(letterObj);
+      } else {
+        letterObj.text = wordList[i][j];
+        letterObj.label = "";
+        updatedWord.push(letterObj);
+      }
+    }
+    updatedWordList.push(updatedWord);
+  }
+  return updatedWordList;
 };

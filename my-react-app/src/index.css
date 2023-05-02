@@ -26,6 +26,7 @@
 body {
   color: white;
   font-family: var(--font-family);
+  background-color: var(--bg-color);
 }
 
 .App {
@@ -62,7 +63,7 @@ h1 {
 .middle-container {
   height: 100%;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: 1fr auto 1fr;
 }
 
 .word-count,
@@ -96,7 +97,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  height: 10rem;
   width: 100%;
   font-size: 1.4rem;
   line-height: 2rem;

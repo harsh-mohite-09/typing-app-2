@@ -62,7 +62,15 @@ h1 {
 .middle-container {
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: auto auto 1fr;
+}
+
+.word-count,
+.timer {
+  position: absolute;
+  font-size: 1.5rem;
+  color: var(--main-color);
+  margin-left: -1.5rem;
 }
 
 .test-config {
@@ -88,11 +96,11 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  height: 7.5rem;
+  height: 10rem;
   width: 100%;
   font-size: 1.5rem;
   line-height: 2rem;
-  overflow: hidden;
+  margin-top: 5rem;
 }
 
 .focus-blur {
@@ -137,15 +145,6 @@ h1 {
   top: 0.4rem;
   /* animation: caretFlash ease-in 1s infinite; */
   background-color: var(--caret-color);
-}
-
-.word-count,
-.timer {
-  position: absolute;
-  top: 10rem;
-  margin: 0.25rem;
-  font-size: 1.5rem;
-  color: var(--main-color);
 }
 
 .score {

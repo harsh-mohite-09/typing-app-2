@@ -10,9 +10,10 @@ import {
 import { resetAll } from "../utils/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faFont } from "@fortawesome/free-solid-svg-icons";
+import Remaining from "./Remaining";
 
 const times = [15, 30, 60];
-const words = [10, 25, 50];
+const words = [10, 25, 50, 100];
 
 const TestConfig = () => {
   const { mode, value } = useSelector((store) => store.testConfig);
@@ -20,6 +21,7 @@ const TestConfig = () => {
 
   return (
     <div className="p-8 text-center">
+      <Remaining />
       <div className="test-config flex w-fit justify-between items-center m-auto">
         <ul className="flex justify-evenly w-[12rem]">
           <li
